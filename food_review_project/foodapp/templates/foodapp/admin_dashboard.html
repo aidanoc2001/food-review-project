@@ -1,0 +1,11 @@
+{% extends 'foodapp/base.html' %}
+{% block content %}
+<h1>Admin Dashboard</h1>
+<p>Use this dashboard to manage users, restaurants, reviews, and reports.</p>
+<ul>
+    <li><a href="{% url 'user_list' %}">Manage Users</a></li>
+    <li><a href="{% url 'restaurant_list' %}">Manage Restaurants</a></li>
+    <li><a href="{% url 'review_list_admin' %}">Manage Reviews</a></li>
+    <li><a href="{% url 'reports_dashboard' %}">View Reports</a></li>
+</ul>
+{% endblock %}

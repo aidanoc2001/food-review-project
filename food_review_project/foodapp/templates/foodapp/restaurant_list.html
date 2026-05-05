@@ -1,0 +1,26 @@
+{% extends 'foodapp/base.html' %}
+{% block content %}
+<h1>Restaurants</h1>
+<form method="get">
+    <input type="text" name="q" value="{{ query }}" placeholder="Search restaurants">
+    <button type="submit">Search</button>
+</form>
+{% if request.user.userprofile.role.name == 'admin' %}
+<p><a class="btn" href="{% url 'restaurant_add' %}">Add Restaurant</a></p>
+{% endif %}
+{% for restaurant in restaurants %}
+<div class="card">
+    <h3><a href="{% url 'restaurant_detail' restaurant.id %}">{{ restaurant.name }}</a></h3>
+    <p>{{ restaurant.location }} | {{ restaurant.category.name }}</p>
+    <p>Average Rating: {{ restaurant.average_rating }}</p>
+    {% if request.user.userprofile.role.name == 'admin' %}
+    <p>
+        <a href="{% url 'restaurant_edit' restaurant.id %}">Edit</a> |
+        <a href="{% url 'restaurant_delete' restaurant.id %}">Delete</a>
+    </p>
+    {% endif %}
+</div>
+{% empty %}
+<p>No restaurants found.</p>
+{% endfor %}
+{% endblock %}

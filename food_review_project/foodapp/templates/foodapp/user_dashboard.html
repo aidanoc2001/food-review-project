@@ -1,0 +1,10 @@
+{% extends 'foodapp/base.html' %}
+{% block content %}
+<h1>User Dashboard</h1>
+<p>Use this dashboard to browse restaurants and manage your reviews.</p>
+<ul>
+    <li><a href="{% url 'restaurant_list' %}">Browse Restaurants</a></li>
+    <li><a href="{% url 'review_add' %}">Add Review</a></li>
+    <li><a href="{% url 'review_history' %}">My Review History</a></li>
+</ul>
+{% endblock %}

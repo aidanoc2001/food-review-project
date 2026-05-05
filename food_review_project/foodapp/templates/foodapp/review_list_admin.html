@@ -1,0 +1,19 @@
+{% extends 'foodapp/base.html' %}
+{% block content %}
+<h1>All Reviews</h1>
+<table>
+<tr><th>User</th><th>Restaurant</th><th>Rating</th><th>Comment</th><th>Actions</th></tr>
+{% for review in reviews %}
+<tr>
+    <td>{{ review.user.username }}</td>
+    <td>{{ review.restaurant.name }}</td>
+    <td>{{ review.rating }}</td>
+    <td>{{ review.comment }}</td>
+    <td>
+        <a href="{% url 'review_edit' review.id %}">Edit</a> |
+        <a href="{% url 'review_delete' review.id %}">Delete</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

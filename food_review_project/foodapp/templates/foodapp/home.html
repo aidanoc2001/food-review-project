@@ -1,0 +1,15 @@
+{% extends 'foodapp/base.html' %}
+{% block content %}
+<h1>Food Review Web Application</h1>
+<p>This app helps users browse Utah restaurants and leave reviews.</p>
+<h2>Featured Restaurants</h2>
+{% for restaurant in restaurants %}
+<div class="card">
+    <h3>{{ restaurant.name }}</h3>
+    <p>{{ restaurant.location }} | {{ restaurant.category.name }}</p>
+    <p>{{ restaurant.description }}</p>
+</div>
+{% empty %}
+<p>No restaurants yet.</p>
+{% endfor %}
+{% endblock %}

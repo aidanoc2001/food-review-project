@@ -1,0 +1,20 @@
+{% extends 'foodapp/base.html' %}
+{% block content %}
+<h1>User Management</h1>
+<p><a class="btn" href="{% url 'user_add' %}">Add User</a></p>
+<table>
+<tr><th>Username</th><th>Name</th><th>Email</th><th>Role</th><th>Actions</th></tr>
+{% for user in users %}
+<tr>
+    <td>{{ user.username }}</td>
+    <td>{{ user.first_name }} {{ user.last_name }}</td>
+    <td>{{ user.email }}</td>
+    <td>{{ user.userprofile.role.name }}</td>
+    <td>
+        <a href="{% url 'user_edit' user.id %}">Edit</a> |
+        <a href="{% url 'user_delete' user.id %}">Delete</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

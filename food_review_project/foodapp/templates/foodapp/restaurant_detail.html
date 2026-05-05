@@ -1,0 +1,20 @@
+{% extends 'foodapp/base.html' %}
+{% block content %}
+<h1>{{ restaurant.name }}</h1>
+<p><strong>Location:</strong> {{ restaurant.location }}</p>
+<p><strong>Category:</strong> {{ restaurant.category.name }}</p>
+<p><strong>Description:</strong> {{ restaurant.description }}</p>
+<p><strong>Average Rating:</strong> {{ average }}</p>
+<p><a class="btn" href="{% url 'review_add' %}">Add Review</a></p>
+<h2>Reviews</h2>
+{% for review in reviews %}
+<div class="card">
+    <p><strong>User:</strong> {{ review.user.username }}</p>
+    <p><strong>Rating:</strong> {{ review.rating }}</p>
+    <p>{{ review.comment }}</p>
+    <p>{{ review.review_date }}</p>
+</div>
+{% empty %}
+<p>No reviews yet.</p>
+{% endfor %}
+{% endblock %}
